@@ -1,0 +1,77 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+function module_example_theme()
+{
+  return [
+    'paragraph__banner' => [
+      'template' => 'paragraph__banner',
+      'base hook' => 'paragraph'
+
+
+    ],
+    'paragraph__static_wysiwyg' => [
+      'template' => 'paragraph__static_wysiwyg',
+      'base hook' => 'paragraph'
+
+    ]
+  ];
+}
+
+function module_example_preprocess_paragraph__banner(&$variables)
+{
+
+  $paragraph = $variables['paragraph'];
+  if (!empty($paragraph->get('field_banner_subtitle')->getValue()[0]['value'])) {
+    kint($paragraph->getParentEntity());
+    $text= $paragraph->get('field_banner_subtitle')->getValue()[0]['value'];
+    kint($text);
+    $nr_timp=$paragraph->getParentEntity();
+
+    //daca am comenta de aici ar merge si pentru nodul care e de tip Article
+    //am incercat mai multe conditii cum sa fac sa intre doar pe ramura de la retele dar nu mi-a dat bine
+    $changedSubtitle =$nr_timp->get('field_timp_coacere')->getValue()[0]['value'];
+    kint($changedSubtitle);
+
+      if (strpos($text, '@timp')) {
+        $valoare_schimbata = str_replace('@timp', $changedSubtitle, $text);
+        kint($valoare_schimbata);
+        $valoare_schimbata_fara_tags = strip_tags($valoare_schimbata);
+        kint($valoare_schimbata_fara_tags);
+        $paragraph->set('field_banner_subtitle', $valoare_schimbata_fara_tags);
+        $paragraph->save();
+
+        //mi-a iesit intr-un final :))
+        // am incercat sa adaug si alte retete (ca sa testez daca merge,iar dupa le-am sters)
+        //initial imi arata normal textul introdus in banner_subtitle
+        //dar dupa ce dau un clear all caches se schimba @timp cu valoarea de la timp_coacere
+
+      }
+
+  }
+}
+
+
+function module_example_form_pareri(&$form,FormStateInterface $form_state,$form_id)
+{
+  if($form_id == 'contact_message_feedback_form')
+  {
+    $form['pareri']=[
+      '#type' =>'textfield',
+      '#title'=>'Pareri',
+    ];
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

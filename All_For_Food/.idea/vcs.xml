@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/admin_toolbar" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/ctools" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/devel" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/entity_reference_revisions" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/maillog" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/paragraphs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/pathauto" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/telephone_validation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/token" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/webform" vcs="Git" />
+  </component>
+</project>
